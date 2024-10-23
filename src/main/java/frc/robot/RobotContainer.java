@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-
+  // Xbox controller used to schedule commands in the bindings
   private final CommandXboxController driverController =
       new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER_PORT);
 
@@ -31,7 +31,9 @@ public class RobotContainer {
     configureBindings();
   }
 
-
+  /**
+   * Method to configure the binding of commands to a controller's buttons
+   */
   private void configureBindings() {
     driverController.a().onTrue(exampleCommand);
   }
