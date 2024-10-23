@@ -12,9 +12,11 @@ import static frc.robot.Constants.*;
 
 public class ExampleSubsystem extends SubsystemBase{
 
-    private DigitalInput sensor = new DigitalInput(EXAMPLE_SENSOR_ID);
+    // Sensor to read values from a digital port on the RoboRIO
+    private final DigitalInput sensor = new DigitalInput(EXAMPLE_SENSOR_ID);
 
-    private CANSparkMax motor = new CANSparkMax(EXAMPLE_MOTOR_ID, MotorType.kBrushless);
+    // Initialization of a motor
+    private final CANSparkMax motor = new CANSparkMax(EXAMPLE_MOTOR_ID, MotorType.kBrushless);
 
     private double targetSpeed;
 
@@ -24,11 +26,17 @@ public class ExampleSubsystem extends SubsystemBase{
 
     @Override
     public void periodic(){
+        //Set the motor to the target speed
         motor.set(targetSpeed);
 
+        //Sends a number to SmartDashboard
         SmartDashboard.putNumber("Example target speed", targetSpeed);
     }
 
+    /**
+     * Method to get the value of the sensor reading
+     * @return the sensor's value
+     */
     public boolean getSensorReading(){
         return sensor.get();
     }
@@ -40,6 +48,4 @@ public class ExampleSubsystem extends SubsystemBase{
     public double getTargetSpeed(){
         return targetSpeed;
     }
-
-
 }
